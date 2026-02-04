@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-pink: #D946EF;
+  --brand-purple: #7C3AED;
+  --brand-blue: #3B82F6;
+  --brand-navy: #0F172A;
+  --brand-deep: #0B1020;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--brand-deep);
+  color: white;
+  min-height: 100vh;
+}
+
+/* Infinite marquee scroll */
+@keyframes logo-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-marquee {
+  animation: logo-marquee 25s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee {
+    animation: none;
+  }
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for main content */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-navy);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-purple);
+}
+
+/* Smooth gradient background pattern */
+.bg-gradient-pattern {
+  background-image: 
+    radial-gradient(ellipse at top right, rgba(217, 70, 239, 0.1), transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(124, 58, 237, 0.1), transparent 50%),
+    radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05), transparent 70%);
+}
+
+/* Text gradient utility */
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand-pink), var(--brand-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--brand-pink);
+  outline-offset: 2px;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* Animation delay utilities */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+/* Text gradient utilities */
+.text-gradient-pink {
+  background: linear-gradient(135deg, var(--brand-pink), var(--brand-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle glow effect for interactive elements */
+.glow-on-hover {
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(217, 70, 239, 0.3);
+}
+
+/* Safe area for mobile sticky bars */
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Club card hover: soft hue glow + thin border + lift (desktop only, class added when hover capable) */
+.club-card-hue-hover {
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.club-card-hue-hover:hover {
+  box-shadow:
+    0 0 40px rgba(var(--card-hue, 255, 255, 255), 0.28),
+    0 24px 48px -12px rgba(0, 0, 0, 0.55);
+  border-color: rgba(var(--card-hue, 255, 255, 255), 0.4);
+}
+
+/* Club card title: on hover, subtle shift toward club hue (very low saturation, desktop only) */
+.club-card-hue-hover:hover .club-card-title {
+  color: color-mix(in srgb, white 90%, rgb(var(--card-hue, 255 255 255)));
+}
+
